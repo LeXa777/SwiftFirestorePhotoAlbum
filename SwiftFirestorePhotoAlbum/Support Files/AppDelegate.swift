@@ -15,7 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        FirebaseApp.configure()
+        // TODO: Uncomment the bellow line once you add the 'GoogleService-Info.plist' file to the project
+        // FirebaseApp.configure()
         return true
     }
 }

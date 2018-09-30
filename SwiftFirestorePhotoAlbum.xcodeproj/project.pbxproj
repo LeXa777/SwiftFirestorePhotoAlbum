@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		AA4CD3D3DA935B977BB632E3 /* Pods_SwiftFirestorePhotoAlbum.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89556B92807D42C49671DAB9 /* Pods_SwiftFirestorePhotoAlbum.framework */; };
-		FA4BF644213DD59A000A5F96 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA4BF643213DD59A000A5F96 /* GoogleService-Info.plist */; };
 		FA4BF648213DDB10000A5F96 /* AlbumService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4BF647213DDB10000A5F96 /* AlbumService.swift */; };
 		FA4BF64B213DDB78000A5F96 /* AlbumEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4BF64A213DDB78000A5F96 /* AlbumEntity.swift */; };
 		FA84790921517C5F0044EEE5 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA84790821517C5F0044EEE5 /* ImageService.swift */; };
@@ -42,7 +41,6 @@
 		38088408ACF486D2D41E09EE /* Pods-SwiftFirestorePhotoAlbum.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftFirestorePhotoAlbum.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftFirestorePhotoAlbum/Pods-SwiftFirestorePhotoAlbum.debug.xcconfig"; sourceTree = "<group>"; };
 		89556B92807D42C49671DAB9 /* Pods_SwiftFirestorePhotoAlbum.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftFirestorePhotoAlbum.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC879D8C97A8169EF5D5BCE0 /* Pods-SwiftFirestorePhotoAlbum.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftFirestorePhotoAlbum.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftFirestorePhotoAlbum/Pods-SwiftFirestorePhotoAlbum.release.xcconfig"; sourceTree = "<group>"; };
-		FA4BF643213DD59A000A5F96 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FA4BF647213DDB10000A5F96 /* AlbumService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumService.swift; sourceTree = "<group>"; };
 		FA4BF64A213DDB78000A5F96 /* AlbumEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumEntity.swift; sourceTree = "<group>"; };
 		FA84790821517C5F0044EEE5 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
@@ -106,7 +104,6 @@
 		FA4BF645213DD5D1000A5F96 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				FA4BF643213DD59A000A5F96 /* GoogleService-Info.plist */,
 				FAB52270213D52F200D04742 /* AppDelegate.swift */,
 				FA9161E5215426E600FA713D /* Extensions */,
 				FAB52277213D52F400D04742 /* Assets.xcassets */,
@@ -298,7 +295,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAB5227B213D52F400D04742 /* LaunchScreen.storyboard in Resources */,
-				FA4BF644213DD59A000A5F96 /* GoogleService-Info.plist in Resources */,
 				FAB52278213D52F400D04742 /* Assets.xcassets in Resources */,
 				FAB52276213D52F200D04742 /* Main.storyboard in Resources */,
 			);
