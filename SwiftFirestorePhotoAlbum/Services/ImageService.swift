@@ -15,109 +15,28 @@ class ImageService {
     
     static let shared = ImageService()
     
-    func getAllImagesFor(albumId: String, images: @escaping ([ImageEntity]) -> ()) -> ListenerRegistration {
-        let imagesCollection = Firestore.getFirestore().images()
-            .whereField("albumId", isEqualTo: albumId)
-            .order(by: "dateAdded")
+    func getAllImagesFor(albumId: String, images: @escaping ([ImageEntity]) -> ()) {
+        // TODO: Add implementation
         
-        return imagesCollection.addSnapshotListener { (query, error) in
-            guard let query = query else {
-                if let error = error {
-                    print("error getting images: ", error.localizedDescription)
-                }
-                return
-            }
-            
-            let imagesEntities = query.documents
-                .map { ImageEntity(id: $0.documentID, data: $0.data()) }
-            
-            DispatchQueue.main.async {
-                images(imagesEntities)
-            }
-        }
+        let image1 = ImageEntity(id: "1", status: .ready, url: "https://github.com/LeXa777/SwiftFirestorePhotoAlbum/raw/starter/Support_Images/sample_image1.jpg")
+        let image2 = ImageEntity(id: "2", status: .ready, url: "https://github.com/LeXa777/SwiftFirestorePhotoAlbum/raw/starter/Support_Images/sample_image2.jpg")
+        let image3 = ImageEntity(id: "3", status: .ready, url: "https://github.com/LeXa777/SwiftFirestorePhotoAlbum/raw/starter/Support_Images/sample_image3.jpg")
+        let image4 = ImageEntity(id: "4", status: .ready, url: "https://github.com/LeXa777/SwiftFirestorePhotoAlbum/raw/starter/Support_Images/sample_image4.jpg")
+        
+        images([image1, image2, image3, image4])
     }
     
     func delete(imageId: String, completion: @escaping () -> ()) {
-        let imageDocRef = Firestore.getFirestore().image(id: imageId)
-        
-        imageDocRef.delete { error in
-            if let error = error {
-                print("error: ", error.localizedDescription)
-                return
-            }
-            
-            DispatchQueue.main.async {
-                completion()
-            }
-        }
-        
-        Storage.storage().image(id: imageId).delete()
+        // TODO: Add implementation
+        completion()
     }
     
     func deleteAllImagesFor(albumId: String) {
-        let firestoreRef = Firestore.getFirestore()
-        let imagesDeleteBatch = firestoreRef.batch()
-    
-        let imagesToDeleteCollection = firestoreRef.images()
-            .whereField("albumId", isEqualTo: albumId)
-        
-        imagesToDeleteCollection.getDocuments { (query, error) in
-            if let error = error {
-                print("error: ", error.localizedDescription)
-                return
-            }
-            
-            guard let query = query else { return }
-            
-            query.documents.forEach { qds in
-                imagesDeleteBatch.deleteDocument(qds.reference)
-                Storage.storage().image(id: qds.documentID).delete()
-            }
-            
-            imagesDeleteBatch.commit()
-        }
+        // TODO: Add implementation
     }
     
     func upload(images: [Data], albumId: String, completion: @escaping () -> ()) {
-        let imagesCollectionRef = Firestore.getFirestore().images()
-        
-        let imagesWithDocRefs = images
-            .map { (docRef: imagesCollectionRef.document(), imageData: $0) }
-        
-        let createImagesBatch = Firestore.getFirestore().batch()
-        
-        imagesWithDocRefs.forEach { (docRef, _) in
-            let data = ["albumId": albumId, "dateAdded": Timestamp(date: Date()), "status": "pending"] as [String : Any]
-            createImagesBatch.setData(data, forDocument: docRef)
-        }
-        
-        createImagesBatch.commit { _ in
-            completion()
-        }
-        
-        let imagesRef = Storage.storage().images()
-        
-        imagesWithDocRefs.forEach { (docRef, imageData) in
-            let imageRef = imagesRef.child(docRef.documentID)
-            
-            imageRef.putData(imageData, metadata: nil, completion: { (meta, error) in
-                if let error = error {
-                    print("error: ", error.localizedDescription)
-                    return
-                }
-                
-                imageRef.downloadURL(completion: { (url, error) in
-                    imageRef.downloadURL(completion: { (url, error) in
-                        if let error = error {
-                            print("error: ", error.localizedDescription)
-                            return
-                        }
-                        
-                        let data = ["status": "ready", "url": url!.absoluteString] as [String : Any]
-                        docRef.updateData(data)
-                    })
-                })
-            })
-        }
+        // TODO: Add implementation
+        completion()
     }
 }

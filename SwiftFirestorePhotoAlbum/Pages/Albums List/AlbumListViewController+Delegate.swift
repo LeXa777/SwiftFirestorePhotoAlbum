@@ -19,7 +19,7 @@ extension AlbumListViewController: UITableViewDelegate {
             if let albumId = self.albums?[indexPath.row].albumId {
                 AlbumService.shared.deleteAlbumWith(albumId: albumId)
             }
-            completionHandler(true)
+            completionHandler(false)
         }
         
         return UISwipeActionsConfiguration(actions: [action])

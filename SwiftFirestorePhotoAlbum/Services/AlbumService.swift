@@ -17,34 +17,17 @@ class AlbumService {
     static let shared = AlbumService()
     
     func addAlbumWith(name: String) {
-        let albumsCollection = Firestore.getFirestore().albums()
-        let data = ["name": name, "dateCreated": Timestamp(date: Date())] as [String : Any]
-        albumsCollection.addDocument(data: data)
+        // TODO: Add implementation
     }
     
     func deleteAlbumWith(albumId: String) {
-        Firestore.getFirestore().album(id: albumId).delete()
-        ImageService.shared.deleteAllImagesFor(albumId: albumId)
+        // TODO: Add implementation
     }
     
-    func getAll(albums: @escaping ([AlbumEntity]) -> ()) -> ListenerRegistration {
-        let albumsCollection = Firestore.getFirestore().albums()
-            .order(by: "dateCreated")
+    func getAll(albums: @escaping ([AlbumEntity]) -> ()) {
+        // TODO: Add implementation
         
-        return albumsCollection.addSnapshotListener { query, error in
-            guard let query = query else {
-                if let error = error {
-                    print("error getting albums: ", error.localizedDescription)
-                }
-                return
-            }
-            
-            let albumList = query.documents
-                .map { AlbumEntity(id: $0.documentID, data: $0.data() ) }
-            
-            DispatchQueue.main.async {
-                albums(albumList)
-            }
-        }
+        let sampleAlbum = AlbumEntity(id: "123", name: "Sample Album", dateCreated: Date.init().addingTimeInterval(-3600), numberOfPhotos: 4)
+        albums([sampleAlbum])
     }
 }

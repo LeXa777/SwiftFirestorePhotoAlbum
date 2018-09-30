@@ -15,6 +15,13 @@ struct AlbumEntity {
     let dateCreated: Date
     let numberOfPhotos: Int
     
+    init(id: String, name: String, dateCreated: Date, numberOfPhotos: Int) {
+        self.albumId = id
+        self.name = name
+        self.dateCreated = dateCreated
+        self.numberOfPhotos = numberOfPhotos
+    }
+    
     init(id: String, data: [String: Any]) {
         self.albumId = id
         self.name = data["name"] as? String ?? ""

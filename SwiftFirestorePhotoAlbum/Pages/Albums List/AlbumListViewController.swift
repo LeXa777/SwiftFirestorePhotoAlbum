@@ -14,7 +14,6 @@ class AlbumListViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var albums: [AlbumEntity]?
-    var queryListener: ListenerRegistration!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +23,7 @@ class AlbumListViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        queryListener = AlbumService.shared.getAll { albums in
+        AlbumService.shared.getAll { albums in
             self.albums = albums
             
             if albums.isEmpty {
@@ -36,11 +35,6 @@ class AlbumListViewController: UIViewController {
             self.tableView.reloadData()
             self.activityIndicator.stopAnimating()
         }
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        queryListener.remove()
     }
     
     private func setupUI() {
@@ -63,7 +57,6 @@ class AlbumListViewController: UIViewController {
         let textField = alertController.textFields![0] as UITextField
         
         let saveAction = UIAlertAction(title: "Save", style: .default) { _ in
-            self.activityIndicator.startAnimating()
             AlbumService.shared.addAlbumWith(name: textField.text ?? "No Name")
             alertController.dismiss(animated: true)
         }

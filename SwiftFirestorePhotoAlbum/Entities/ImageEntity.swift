@@ -17,6 +17,12 @@ struct ImageEntity {
     let status: ImageStatus
     let url: String?
     
+    init(id: String, status: ImageStatus, url: String?) {
+        self.imageId = id
+        self.status = status
+        self.url = url
+    }
+    
     init(id: String, data: [String: Any]) {
         self.imageId = id
         

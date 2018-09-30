@@ -13,7 +13,6 @@ class AlbumDetailsViewController: UIViewController, ImageTaskDownloadedDelegate 
     var album: AlbumEntity!
     var imageEntities: [ImageEntity]?
     var imageTasks = [String: ImageTask]()
-    var queryListener: ListenerRegistration!
     
     var selectedPhoto: (index: Int, photoDetailsController: PhotoDetailsViewController)?
     
@@ -33,7 +32,7 @@ class AlbumDetailsViewController: UIViewController, ImageTaskDownloadedDelegate 
         
         selectedPhoto = nil
         
-        queryListener = ImageService.shared.getAllImagesFor(albumId: album.albumId) { [weak self] images in
+        ImageService.shared.getAllImagesFor(albumId: album.albumId) { [weak self] images in
             guard let strongSelf = self else { return }
             strongSelf.imageEntities = images
             strongSelf.updateImageTasks()
@@ -46,14 +45,6 @@ class AlbumDetailsViewController: UIViewController, ImageTaskDownloadedDelegate 
             
             strongSelf.collectionView.reloadData()
             strongSelf.activityIndicator.stopAnimating()
-        }
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-        if self.isMovingFromParentViewController {
-            queryListener.remove()
         }
     }
     
